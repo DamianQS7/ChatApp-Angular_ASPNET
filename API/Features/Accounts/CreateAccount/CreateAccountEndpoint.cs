@@ -20,7 +20,7 @@ public static class CreateAccountEndpoint
             if (userFromDb is not null)
                 return Results.BadRequest(Response<string>.Failure("User already exist."));
 
-            AppUser user = new() { Email = request.Email, FullName = request.FullName };
+            AppUser user = new() { Email = request.Email, FullName = request.FullName, UserName = request.UserName };
 
             IdentityResult result = await userManager.CreateAsync(user, request.Password);
 
@@ -30,6 +30,7 @@ public static class CreateAccountEndpoint
                 ));
 
             return Results.Ok(Response<string>.Success("", "Account created successfully"));
-        });
+        })
+        .DisableAntiforgery();
     }
 }

@@ -5,10 +5,12 @@ namespace API.Features.Accounts;
 
 public static class AccountsEndpoint
 {
-    public static void MapGames(this IEndpointRouteBuilder app)
+    public static RouteGroupBuilder MapAccounts(this IEndpointRouteBuilder app)
     {
         RouteGroupBuilder group = app.MapGroup("/api/accounts");
 
         group.MapCreateAccount(); // accounts/register
+
+        return group;
     }
 }

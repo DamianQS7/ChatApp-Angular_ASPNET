@@ -28,7 +28,7 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddChatAppAuthentication(this IServiceCollection services, IConfiguration config)
+    public static IServiceCollection AddChatAppAuthentication(this IServiceCollection services, JwtSettings? jwtSettings)
     {
         services.AddAuthentication(opt =>
         {
@@ -37,8 +37,6 @@ public static class ServiceCollectionExtensions
             opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
         }).AddJwtBearer(opt =>
         {
-            JwtSettings? jwtSettings = config.GetSection("JwtSettings").Get<JwtSettings>();
-
             opt.SaveToken = true;
             opt.RequireHttpsMetadata = false;
             opt.TokenValidationParameters = new TokenValidationParameters
@@ -49,6 +47,7 @@ public static class ServiceCollectionExtensions
                 ValidateAudience = false
             };
         });
+
         return services;
     }
 }
