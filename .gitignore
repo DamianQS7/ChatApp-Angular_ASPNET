@@ -1,1 +1,36 @@
+# Build output
+bin/
+obj/
+
+# User secrets
+secrets.json
+*.user
+*.suo
+
+# Logs
+*.log
+logs/
+
+# Publish output
+publish/
+
+# Visual Studio files
+.vs/
+*.vscode/
+*.userprefs
+
+# Rider files
+.idea/
+
+# ASP.NET generated files
+wwwroot/lib/
+
+# npm packages (for Angular client)
+ChatApp-Client/node_modules/
+
+# Environment files
+*.env
 API/appsettings.Development.json
+# Ignore build output folders
+bin/
+obj/
